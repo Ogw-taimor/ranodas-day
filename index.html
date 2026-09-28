@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>For Ranoda</title>
+  <meta name="description" content="A little universe made for Ranoda's birthday." />
+  <meta name="theme-color" content="#120C2B" />
+  <meta property="og:title" content="For Ranoda" />
+  <meta property="og:description" content="I made a little something for you. Don't just scroll. Explore." />
+  <meta property="og:image" content="images/full/snow-hug.jpg" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23120C2B'/%3E%3Cpath d='M16 5c3 4 3 7 0 9-3-2-3-5 0-9z' fill='%23FFCF7A'/%3E%3Crect x='13' y='15' width='6' height='12' rx='1.5' fill='%23FF9DC0'/%3E%3C/svg%3E" />
+  <link rel="preload" href="fonts/fraunces-latin-full-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/caveat-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Background: 3D starfield / snowfall -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Sound toggle -->
+  <button class="sound-toggle" id="soundToggle" aria-label="Turn sound off" aria-pressed="true" hidden>
+    <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg>
+    <svg class="icon-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg>
+  </button>
+
+  <main>
+    <!-- ============ 0. INTRO ============ -->
+    <section class="intro" id="intro" aria-labelledby="introTitle">
+      <div class="intro-inner">
+        <h1 class="intro-title" id="introTitle" data-split>Hey, birthday girl…</h1>
+        <p class="intro-sub">I made a little something for you.<br />Don't just scroll. Explore.</p>
+        <button class="btn btn-glow" id="enterBtn">Enter our world</button>
+        <p class="intro-hint">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2" fill="none"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>
+          Sound on makes it better
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 1. HUB / OUR WORLD ============ -->
+    <section class="hub" id="hub" aria-label="Our little universe" hidden>
+      <header class="hub-head">
+        <p class="hub-kicker">Our little universe</p>
+        <p class="hub-hint" id="hubHint">Tap anything that glows. Every place you explore lights a candle.</p>
+      </header>
+
+      <div class="moon" id="moon" aria-hidden="true">
+        <div class="moon-ring"></div>
+        <img src="images/thumb/ski-smile.jpg" alt="" />
+        <span class="moon-label">us</span>
+      </div>
+
+      <button class="obj" data-scene="memories" style="--x:20%;--y:31%;--d:0s">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="14" y="30" width="72" height="50" rx="10" class="fill-soft"/>
+          <path d="M34 30l6-10h20l6 10"/>
+          <circle cx="50" cy="55" r="15"/><circle cx="50" cy="55" r="7" class="fill-glow"/>
+          <circle cx="74" cy="41" r="3" class="fill-glow"/>
+          <path d="M22 88l6-4M78 88l-6-4" class="spark"/>
+        </svg>
+        <span class="obj-label">our memories</span>
+        <span class="obj-done" aria-hidden="true"></span>
+      </button>
+
+      <button class="obj" data-scene="letter" style="--x:80%;--y:29%;--d:.6s">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="14" y="28" width="72" height="50" rx="6" class="fill-soft"/>
+          <path d="M14 32l36 26 36-26"/>
+          <path d="M50 66c-6-5-10-8-10-12a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 4-4 7-10 12z" class="fill-rose"/>
+        </svg>
+        <span class="obj-label">a letter for you</span>
+        <span class="obj-done" aria-hidden="true"></span>
+      </button>
+
+      <button class="obj" data-scene="gift" style="--x:24%;--y:71%;--d:1.2s">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="20" y="46" width="60" height="40" rx="5" class="fill-soft"/>
+          <rect x="15" y="34" width="70" height="14" rx="4" class="fill-soft"/>
+          <path d="M50 34v52"/>
+          <path d="M50 34c-10-14-24-10-18-2 3 4 18 2 18 2zM50 34c10-14 24-10 18-2-3 4-18 2-18 2z" class="fill-rose"/>
+        </svg>
+        <span class="obj-label">open me</span>
+        <span class="obj-done" aria-hidden="true"></span>
+      </button>
+
+      <button class="obj" data-scene="loves" style="--x:76%;--y:71%;--d:1.8s">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M34 22h32v8c10 4 14 12 14 22v24a10 10 0 0 1-10 10H30a10 10 0 0 1-10-10V52c0-10 4-18 14-22z" class="fill-soft"/>
+          <path d="M32 22h36"/>
+          <path d="M42 58c-4-3-6-5-6-8a3.5 3.5 0 0 1 6-1.5 3.5 3.5 0 0 1 6 1.5c0 3-2 5-6 8z" class="fill-rose"/>
+          <path d="M60 74c-4-3-6-5-6-8a3.5 3.5 0 0 1 6-1.5 3.5 3.5 0 0 1 6 1.5c0 3-2 5-6 8z" class="fill-glow"/>
+          <path d="M56 50c-2.5-2-4-3.2-4-5a2.3 2.3 0 0 1 4-1 2.3 2.3 0 0 1 4 1c0 1.8-1.5 3-4 5z" class="fill-rose"/>
+        </svg>
+        <span class="obj-label">things I love</span>
+        <span class="obj-done" aria-hidden="true"></span>
+      </button>
+
+      <!-- hidden stars get injected here -->
+      <div class="secrets" id="secrets"></div>
+
+      <div class="mini-cake" id="miniCake" aria-live="polite">
+        <div class="mini-cake-art" id="miniCakeArt"></div>
+        <p class="mini-cake-text" id="miniCakeText">0 of 4 candles lit</p>
+      </div>
+    </section>
+
+    <!-- ============ 2. MEMORIES ============ -->
+    <section class="scene scene-memories" id="scene-memories" aria-labelledby="memTitle" hidden>
+      <button class="back" data-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none"/></svg>Back to our world</button>
+      <div class="scene-scroll">
+        <header class="scene-head">
+          <h2 id="memTitle">Our memories</h2>
+          <p>Every one of these is a day I'd live again. Tap one.</p>
+        </header>
+        <div class="polaroids" id="polaroids"></div>
+        <p class="scene-foot" id="memFoot">Look at every one of them properly, then come back.</p>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Memory" hidden>
+      <div class="lb-backdrop" data-lb-close></div>
+      <figure class="lb-figure" id="lbFigure">
+        <img id="lbImg" alt="" />
+        <figcaption id="lbCap"></figcaption>
+      </figure>
+      <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous memory"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none"/></svg></button>
+      <button class="lb-nav lb-next" id="lbNext" aria-label="Next memory"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none"/></svg></button>
+      <button class="lb-close" data-lb-close aria-label="Close memory"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none"/></svg></button>
+    </div>
+
+    <!-- ============ 3. LETTER ============ -->
+    <section class="scene scene-letter" id="scene-letter" aria-labelledby="letterTitle" hidden>
+      <div class="letter-bg" aria-hidden="true"><img alt="" /><img alt="" /></div>
+      <button class="back" data-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none"/></svg>Back to our world</button>
+      <h2 class="sr-only" id="letterTitle">A letter for you</h2>
+
+      <div class="envelope-wrap" id="envelopeWrap">
+        <button class="envelope" id="envelope" aria-label="Open the letter">
+          <span class="env-back"></span>
+          <span class="env-paper"><span class="env-paper-text">for Ranoda</span></span>
+          <span class="env-front"></span>
+          <span class="env-flap"></span>
+          <span class="env-seal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20c-5-3.8-8-6.5-8-10a4.2 4.2 0 0 1 8-1.8A4.2 4.2 0 0 1 20 10c0 3.5-3 6.2-8 10z"/></svg></span>
+        </button>
+        <p class="envelope-hint">Click to open</p>
+      </div>
+
+      <article class="letter-sheet" id="letterSheet" hidden>
+        <div class="letter-lines" id="letterLines"></div>
+        <div class="letter-end" id="letterEnd">
+          <p>I have one more thing for you…</p>
+          <button class="btn btn-glow" id="toGiftBtn">Open your gift</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 4. GIFT ============ -->
+    <section class="scene scene-gift" id="scene-gift" aria-labelledby="giftTitle" hidden>
+      <button class="back" data-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none"/></svg>Back to our world</button>
+      <div class="gift-stage" id="giftStage">
+        <h2 id="giftTitle" class="gift-title">Something is waiting inside…</h2>
+        <button class="giftbox" id="giftbox" aria-label="Open the gift box">
+          <span class="gb-glow"></span>
+          <span class="gb-base"><span class="gb-ribbon-v"></span></span>
+          <span class="gb-lid"><span class="gb-ribbon-v"></span>
+            <span class="gb-bow"><i></i><i></i></span>
+          </span>
+        </button>
+        <p class="gift-hint" id="giftHint">Tap the box</p>
+      </div>
+      <div class="gift-reveal" id="giftReveal" hidden>
+        <h3>A few promises for this year</h3>
+        <div class="promise-cards" id="promiseCards"></div>
+      </div>
+    </section>
+
+    <!-- ============ 5. THINGS I LOVE ============ -->
+    <section class="scene scene-loves" id="scene-loves" aria-labelledby="lovesTitle" hidden>
+      <button class="back" data-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none"/></svg>Back to our world</button>
+      <header class="scene-head loves-head">
+        <h2 id="lovesTitle">Things I love about you</h2>
+        <p id="lovesCount">Catch them. Open 5 to unlock something.</p>
+      </header>
+      <div class="bubbles" id="bubbles"></div>
+      <div class="love-note" id="loveNote" role="status" aria-live="polite" hidden>
+        <p class="love-note-word" id="loveNoteWord"></p>
+        <p class="love-note-text" id="loveNoteText"></p>
+      </div>
+      <div class="unlock" id="unlock" hidden>
+        <p>Okay… you've unlocked something.</p>
+        <button class="btn btn-glow" data-close>Light the candle</button>
+      </div>
+    </section>
+
+    <!-- ============ 6. FINALE: CAKE ============ -->
+    <section class="finale" id="finale" aria-labelledby="finaleTitle" hidden>
+      <p class="finale-wait" id="finaleWait">Wait…</p>
+      <p class="finale-last" id="finaleLast">There's one last thing.</p>
+      <div class="cake-stage" id="cakeStage">
+        <h2 class="finale-title" id="finaleTitle">Happy birthday, Ranoda</h2>
+        <div class="big-cake" id="bigCake"></div>
+        <p class="wish-text" id="wishText">Close your eyes. Make a wish.</p>
+        <div class="wish-actions" id="wishActions">
+          <button class="btn btn-glow btn-big" id="blowTapBtn">Blow out the candles</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. ENDING ============ -->
+    <section class="ending" id="ending" aria-labelledby="endTitle" hidden>
+      <div class="end-photo" id="endPhoto">
+        <img src="images/full/snow-hug.jpg" alt="The two of us hugging in the snow" />
+      </div>
+      <div class="end-text">
+        <p class="end-line" data-end>Another year of you.</p>
+        <p class="end-line" data-end>Another year of us.</p>
+        <h2 class="end-title" id="endTitle" data-end>Happy birthday, Ranoda</h2>
+        <p class="end-msg" data-end>I hope this little world makes you smile even half as much as you make me smile.</p>
+        <div class="end-question" data-end>
+          <p>Ready for another year with me?</p>
+          <button class="btn btn-glow btn-big" id="ofCourseBtn">Of course</button>
+        </div>
+        <p class="end-knew" id="endKnew" hidden>I knew it.</p>
+        <button class="replay" id="replayBtn" hidden>Walk through it again</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast for hidden stars -->
+  <div class="star-toast" id="starToast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Effects layer: confetti, hearts -->
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="flyers" id="flyers" aria-hidden="true"></div>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
