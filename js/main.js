@@ -18,11 +18,7 @@ const CONFIG = {
     { file: "late-night.jpg",    caption: "Late night, closed shops, still our favorite spot" },
     { file: "glasses.jpg",       caption: "Matching glasses, matching mood" },
     { file: "golden-hour.jpg",   caption: "Golden hour, pink shirt, my favorite view" },
-    { file: "dinner-mirror.jpg", caption: "Dinner first, mirror photo always" },
-    { file: "matcha.jpg",        caption: "Matcha in hand, thinking about something dramatic" },
-    { file: "arch.jpg",          caption: "Looking like this should be illegal" },
-    { file: "flowers.jpg",       caption: "Flowers for the one who deserves a whole garden" },
-    { file: "spider.jpg",        caption: "Your artist era" },
+    { file: "dinner-mirror.jpg", caption: "Mirror photo always" },
     { file: "hands.jpg",         caption: "Your hand, my favorite place to be" },
   ],
   memoriesToLight: 4, // how many photos she has to open to earn the candle
